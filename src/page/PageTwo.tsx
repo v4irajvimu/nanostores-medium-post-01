@@ -1,17 +1,16 @@
-import { Box, Paper, Typography, Button } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import React from "react";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import Layout from "../common/Layout";
-
+import { useStore } from "@nanostores/react";
 import { useSearchParams } from "react-router-dom";
-import { useModeContext } from "../context/ModeContextProvider";
+import { mode, toggleMode } from "../store/modeStore";
 
 type Props = {};
 
 const PageTwo = (props: Props) => {
   const [params] = useSearchParams();
-  const { mode, toggleMode } = useModeContext();
+  const modeValue = useStore(mode);
 
   const handleButtonClick = () => toggleMode();
   return (
@@ -36,9 +35,11 @@ const PageTwo = (props: Props) => {
             size="large"
             sx={{ mt: 2 }}
             onClick={handleButtonClick}
-            startIcon={mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+            startIcon={
+              modeValue === "dark" ? <LightModeIcon /> : <DarkModeIcon />
+            }
           >
-            Switch to {`${mode === "dark" ? "light" : "dark"}`} mode
+            Switch to {`${modeValue === "dark" ? "light" : "dark"}`} mode
           </Button>
         </Box>
       </Paper>

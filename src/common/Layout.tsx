@@ -1,19 +1,18 @@
-import React, { ReactNode } from "react";
-import { Box, Paper, Typography } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useModeContext } from "../context/ModeContextProvider";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useStore } from "@nanostores/react";
+import { ReactNode } from "react";
+import { mode } from "../store/modeStore";
 
 type LayoutProps = {
   children: ReactNode;
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const { mode } = useModeContext();
-
+  const modeValue = useStore(mode);
   const theme = createTheme({
     palette: {
-      mode,
+      mode: modeValue,
     },
   });
   return (
