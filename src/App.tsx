@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ModeContextProvider from "./context/ModeContextProvider";
 import PageOne from "./page/PageOne";
 import PageTwo from "./page/PageTwo";
 
@@ -19,7 +20,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <ModeContextProvider>
+      <RouterProvider router={router} />
+    </ModeContextProvider>
+  );
 }
 
 export default App;

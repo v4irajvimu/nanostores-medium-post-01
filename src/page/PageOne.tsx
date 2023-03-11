@@ -1,11 +1,16 @@
-import { Box, Paper, Typography, Button } from "@mui/material";
-import React from "react";
-import Layout from "../common/Layout";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { Box, Button, Paper, Typography } from "@mui/material";
+import Layout from "../common/Layout";
+import { useModeContext } from "../context/ModeContextProvider";
 
 type Props = {};
 
 const PageOne = (props: Props) => {
+  const { mode, toggleMode } = useModeContext();
+
+  const handleButtonClick = () => toggleMode();
+
   return (
     <Layout>
       <Paper
@@ -39,9 +44,10 @@ const PageOne = (props: Props) => {
               color="primary"
               size="large"
               sx={{ mt: 2 }}
-              startIcon={<LightModeIcon />}
+              onClick={handleButtonClick}
+              startIcon={mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
             >
-              Switch to light mode
+              Switch to {`${mode === "dark" ? "light" : "dark"}`} mode
             </Button>
           </Box>
           <Box
