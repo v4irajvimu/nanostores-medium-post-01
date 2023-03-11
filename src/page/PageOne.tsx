@@ -1,6 +1,7 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography, Button } from "@mui/material";
 import React from "react";
 import Layout from "../common/Layout";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 type Props = {};
 
@@ -33,6 +34,15 @@ const PageOne = (props: Props) => {
             flexDirection={"column"}
           >
             <Typography variant="h1">Page one</Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              sx={{ mt: 2 }}
+              startIcon={<LightModeIcon />}
+            >
+              Switch to light mode
+            </Button>
           </Box>
           <Box
             display={"flex"}

@@ -10,6 +10,10 @@ function App() {
       element: <PageOne />,
     },
     {
+      path: "/page-1",
+      element: <PageOne />,
+    },
+    {
       path: "/page-2",
       element: <PageTwo />,
     },
