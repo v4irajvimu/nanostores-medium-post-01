@@ -10,22 +10,13 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const darkTheme = createTheme({
     palette: {
-      mode: "light",
+      mode: "dark",
     },
   });
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Paper sx={{ flex: 1, display: "flex", height: "100vh" }}>
-        <Box
-          display={"flex"}
-          flex={1}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          {children}
-        </Box>
-      </Paper>
+      {children}
     </ThemeProvider>
   );
 };
